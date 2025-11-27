@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.whitehouseestate.com/images/estate-moniya.jpg</image:loc>
+      <image:title>Whitehouse Estate Moniya</image:title>
+    </image:image>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/about.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/contact.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Locations Overview -->
+  <url>
+    <loc>https://www.whitehouseestate.com/locations.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Moniya Location -->
+  <url>
+    <loc>https://www.whitehouseestate.com/location-moniya.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.whitehouseestate.com/images/estate-moniya.jpg</image:loc>
+      <image:title>Whitehouse Estate Moniya Ibadan</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Atan Location -->
+  <url>
+    <loc>https://www.whitehouseestate.com/location-atan.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.whitehouseestate.com/images/estate-atan.jpg</image:loc>
+      <image:title>Whitehouse Estate Atan Ogun</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Kuje Location -->
+  <url>
+    <loc>https://www.whitehouseestate.com/location-kuje.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.whitehouseestate.com/images/estate-kuje.jpg</image:loc>
+      <image:title>Whitehouse Estate Kuje Abuja</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Services Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/services.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- ROI / Why Invest Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/roi.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- FAQ Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/faq.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Testimonials Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/testimonials.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Legal / Title Verification Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/legal.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog / Resources Page -->
+  <url>
+    <loc>https://www.whitehouseestate.com/blog.html</loc>
+    <lastmod>2025-11-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+</urlset>

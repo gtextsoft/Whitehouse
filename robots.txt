@@ -1,0 +1,15 @@
+# Whitehouse Group Estate - Robots.txt
+# This file tells search engines which pages to crawl and which to ignore
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.whitehouseestate.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow paths (none currently, all pages are public)
+# Disallow: /admin/
+# Disallow: /private/
