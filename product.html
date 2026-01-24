@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Our Products Whitehouse Group Estate</title>
+    <meta name="title" content="Our Products  Whitehouse Group Estate">
+    <meta name="description" content="Explore our premium real estate offerings.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <img src="images/Whitehouse GROUP.png" alt="Whitehouse Group Estate" style="height: 50px; width: auto;">
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="locations.html" class="nav-link">Estates</a></li>
+                <li><a href="product.html" class="nav-link">Products</a></li>
+
+
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="product.html" class="btn btn-accent btn-sm">Product</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; display: flex; align-items: center;">
+        <div class="hero-content container">
+            <h1 class="hero-headline">Our Exclusive Estates</h1>
+            <p class="hero-subheadline">
+                Discover premium land and housing units available for immediate investment.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section">
+        <div class="container">
+            <div id="product-loading" class="text-center">
+                <p>Loading products...</p>
+            </div>
+            <div id="product-list" class="grid grid-3" style="display: none;">
+                <!-- Products will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Whitehouse Group Estate</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                        Building estates that behave like precious stones rare, clear, and timeless.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="locations.html" class="footer-link">Our Estates</a>
+                        <a href="services.html" class="footer-link">Services</a>
+                        <a href="roi.html" class="footer-link">Why Invest</a>
+                        <a href="testimonials.html" class="footer-link">Testimonials</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <div class="footer-links">
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="faq.html" class="footer-link">FAQ</a>
+                        <a href="legal.html" class="footer-link">Title Verification</a>
+                        <a href="contact.html" class="footer-link">Contact Us</a>
+                        <a href="payment.html" class="footer-link">Our Account</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <a href="tel:+234" class="footer-link">Phone: +234 XXX XXX XXXX</a>
+                        <a href="mailto:info@whitehouseestate.com" class="footer-link">Email:
+                            info@whitehouseestate.com</a>
+                        <a href="https://wa.me/234" class="footer-link" target="_blank">WhatsApp: +234 XXX XXX XXXX</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span class="copyright-year">2025</span> Whitehouse Group Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+    <!-- Product Fetch Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const productList = document.getElementById('product-list');
+            const loader = document.getElementById('product-loading');
+
+            const estateIds = [3, 7]; // IDs requested by user
+            const apiBase = 'https://api.stephenakintayotv.com/api/v1/estate/detail/';
+
+            // Create an observer for animation (matching script.js logic)
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            try {
+                const fetchPromises = estateIds.map(id =>
+                    fetch(`${apiBase}${id}`)
+                        .then(res => res.json())
+                        .catch(err => {
+                            console.error(`Failed to fetch estate ${id}:`, err);
+                            return null;
+                        })
+                );
+
+                const results = await Promise.all(fetchPromises);
+
+                loader.style.display = 'none';
+                productList.style.display = 'grid'; // Enable the grid
+
+                results.forEach(result => {
+                    if (result && result.success && result.data) {
+                        const data = result.data;
+                        const card = document.createElement('div');
+                        card.className = 'card card-relative';
+
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(30px)';
+                        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+                        const imageUrl = (data.media && data.media.photos && data.media.photos.length > 0)
+                            ? data.media.photos[0]
+                            : 'images/Whitehouse GROUP.jpg';
+
+                        const price = data.plot_detail ? data.plot_detail.formatted_price : 'N/A';
+                        const promoPrice = data.plot_detail ? data.plot_detail.formatted_promotion_price : null;
+
+                        let priceHtml = `<div style="font-weight: 800; color: var(--color-dark); font-size: 1.25rem;">N${price}</div>`;
+                        if (promoPrice) {
+                            priceHtml = `<div style="display:flex; flex-direction:column;">
+                                <span style="text-decoration: line-through; color: #999; font-size: 0.85rem;">N${price}</span>
+                                <span style="font-weight: 800; color: var(--color-accent); font-size: 1.25rem;">N${promoPrice}</span>
+                            </div>`;
+                        }
+
+                        card.innerHTML = `
+                            <div class="card-badge"><span class="badge badge-accent">Available</span></div>
+                            <img src="${imageUrl}" alt="${data.title}" class="card-image" loading="lazy">
+                            <h3 class="card-title" style="margin-bottom: 0.25rem;">${data.title}</h3>
+                            <p class="text-accent" style="font-weight: 700; font-size: 0.8125rem; margin-bottom: 1rem; text-transform: uppercase;">
+                                ${data.town_or_city}, ${data.state}
+                            </p>
+                            <div class="card-text" style="font-size: 0.9375rem; margin-bottom: 1.5rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 3rem;">
+                                ${data.description}
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 1rem;">
+                                ${priceHtml}
+                                <span style="font-size: 0.75rem; color: var(--color-text-light); text-transform: uppercase; font-weight: 600;">Starting Price</span>
+                            </div>
+                            <div class="card-footer">
+                                <a href="property-view.html?id=${data.id}" class="btn btn-primary btn-sm" style="flex:1">View Details</a>
+                                <a href="payment.html?id=${data.id}" class="btn btn-accent btn-sm" style="flex:1">Buy</a>
+                            </div>
+                        `;
+
+                        productList.appendChild(card);
+                        observer.observe(card);
+                    }
+                });
+
+                if (productList.children.length === 0) {
+                    productList.innerHTML = '<p class="text-center" style="grid-column: 1/-1;">No products found.</p>';
+                }
+
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                loader.innerHTML = '<p class="text-error">Error loading products. Please try again later.</p>';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -33,12 +33,12 @@ const header = document.querySelector('.header');
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
-  
+
   if (currentScroll <= 0) {
     header.style.transform = 'translateY(0)';
     return;
   }
-  
+
   if (currentScroll > lastScroll && currentScroll > 100) {
     // Scrolling down
     header.style.transform = 'translateY(-100%)';
@@ -46,7 +46,7 @@ window.addEventListener('scroll', () => {
     // Scrolling up
     header.style.transform = 'translateY(0)';
   }
-  
+
   lastScroll = currentScroll;
 });
 
@@ -91,10 +91,11 @@ navLinks.forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
-    if (href !== '#') {
-      e.preventDefault();
+    // Only smooth scroll if it's an internal anchor and NOT just '#'
+    if (href.startsWith('#') && href.length > 1) {
       const target = document.querySelector(href);
       if (target) {
+        e.preventDefault();
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start'

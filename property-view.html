@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detailed property information - Whitehouse Group Estate">
+    <title>Property Details - Whitehouse Group Estate</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">
+                <img src="images/Whitehouse GROUP.png" alt="Whitehouse Group Estate" style="height: 50px; width: auto;">
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="locations.html" class="nav-link">Estates</a></li>
+                <li><a href="product.html" class="nav-link">Products</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+
+    <section id="property-hero" class="hero"
+        style="min-height: 40vh; background-color: var(--color-dark); color: white;">
+        <div class="hero-content container">
+            <h1 id="hero-title" class="hero-headline hero-text-shadow" style="color: white;">Property Details</h1>
+            <p id="hero-location" class="hero-subheadline hero-text-shadow" style="color: rgba(255, 255, 255, 0.9);">
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container overflow-hidden">
+            <div id="loading-state" class="text-center">
+                <p>Fetching property details...</p>
+            </div>
+
+            <div id="property-content" style="display: none;">
+                <div class="grid grid-2" style="gap: var(--spacing-3xl); align-items: flex-start;">
+
+                    <!-- Media / Images -->
+                    <div id="property-media">
+                        <!-- Swiper/Gallery placeholder -->
+                        <div class="card" style="padding: 0; overflow: hidden; margin-bottom: var(--spacing-lg);">
+                            <img id="main-image" src="" alt="Property Image"
+                                style="width: 100%; height: 450px; object-fit: cover;">
+                        </div>
+                        <div id="image-gallery" class="grid grid-4" style="gap: var(--spacing-sm);">
+                            <!-- Gallery thumbs injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div>
+                        <div style="margin-bottom: var(--spacing-xl);">
+                            <span id="property-status" class="badge badge-accent mb-1">Available</span>
+                            <h2 id="title" style="margin-bottom: 0.5rem;"></h2>
+                            <p id="location-text" class="text-accent"
+                                style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.5rem;">
+                            </p>
+                            <div id="price-container"
+                                style="font-size: 2rem; font-weight: 800; color: var(--color-dark); margin-bottom: var(--spacing-lg);">
+                            </div>
+
+                            <div class="card-footer" style="border: none; padding: 0;">
+                                <a id="buy-btn" href="#" class="btn btn-accent btn-lg"
+                                    style="width: 100%; justify-content: center;">Buy Now</a>
+                            </div>
+                        </div>
+
+                        <div class="card glass-panel" style="margin-bottom: var(--spacing-xl);">
+                            <h4 style="margin-bottom: var(--spacing-md);">Property Description</h4>
+                            <div id="description" class="card-text"></div>
+                        </div>
+
+                        <div class="grid grid-2" style="gap: var(--spacing-md);">
+                            <div class="card">
+                                <h5
+                                    style="font-size: 0.875rem; color: var(--color-text-light); text-transform: uppercase;">
+                                    Title</h5>
+                                <p id="title-type" style="font-weight: 600;"></p>
+                            </div>
+                            <div class="card">
+                                <h5
+                                    style="font-size: 0.875rem; color: var(--color-text-light); text-transform: uppercase;">
+                                    Size</h5>
+                                <p id="size-text" style="font-weight: 600;"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 Whitehouse Group Estate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const propertyId = urlParams.get('id');
+
+            if (!propertyId) {
+                window.location.href = 'product.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://api.stephenakintayotv.com/api/v1/estate/detail/${propertyId}`);
+                const result = await response.json();
+
+                if (result && result.success && result.data) {
+                    const data = result.data;
+
+                    // Set Buy button immediately
+                    document.getElementById('buy-btn').href = `payment.html?id=${propertyId}`;
+
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('property-content').style.display = 'block';
+
+                    // Update UI
+                    document.getElementById('hero-title').textContent = data.title;
+                    document.getElementById('hero-location').textContent = `${data.town_or_city}, ${data.state}`;
+                    document.getElementById('title').textContent = data.title;
+                    document.getElementById('location-text').textContent = `${data.town_or_city}, ${data.state}`;
+                    document.getElementById('description').innerHTML = data.description;
+                    document.getElementById('title-type').textContent = data.title_type || 'Verified Title';
+                    document.getElementById('size-text').textContent = data.plot_detail ? data.plot_detail.plot_square_meter + ' SQM' : 'Standard Plot';
+
+                    const price = data.plot_detail ? data.plot_detail.formatted_price : 'N/A';
+                    const promoPrice = data.plot_detail ? data.plot_detail.formatted_promotion_price : null;
+
+                    if (promoPrice) {
+                        document.getElementById('price-container').innerHTML = `
+                            <span style="text-decoration: line-through; color: #999; font-size: 1.25rem; display: block; margin-bottom: 0.25rem;">₦${price}</span>
+                            <span style="color: var(--color-accent);">₦${promoPrice}</span>
+                        `;
+                    } else {
+                        document.getElementById('price-container').textContent = `₦${price}`;
+                    }
+
+                    // Images
+                    if (data.media && data.media.photos && data.media.photos.length > 0) {
+                        document.getElementById('main-image').src = data.media.photos[0];
+                        const gallery = document.getElementById('image-gallery');
+                        data.media.photos.forEach((photo, index) => {
+                            const img = document.createElement('img');
+                            img.src = photo;
+                            img.style.width = '100%';
+                            img.style.height = '80px';
+                            img.style.objectFit = 'cover';
+                            img.style.borderRadius = 'var(--radius-sm)';
+                            img.style.cursor = 'pointer';
+                            img.onclick = () => document.getElementById('main-image').src = photo;
+                            gallery.appendChild(img);
+                        });
+                    } else {
+                        document.getElementById('main-image').src = 'images/Whitehouse GROUP.png';
+                    }
+
+                    // Update Hero BG if possible
+                    if (data.media && data.media.photos && data.media.photos.length > 0) {
+                        document.getElementById('property-hero').style.background = `linear-gradient(rgba(26, 26, 46, 0.8), rgba(26, 26, 46, 0.8)), url('${data.media.photos[0]}') center/cover no-repeat`;
+                    }
+                } else {
+                    document.getElementById('loading-state').innerHTML = '<p class="text-error">Property not found.</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading-state').innerHTML = '<p class="text-error">Error loading property details.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>
