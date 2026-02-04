@@ -1,5 +1,5 @@
 # Redirect /investormeeting to Zoom webinar registration
 RewriteEngine On
-RewriteRule ^investormeeting/?$ https://us06web.zoom.us/webinar/register/WN_46NfhtQAROiqO_3-38VsNQ [R=301,L]
+RewriteRule ^investormeeting/?$ https://us06web.zoom.us/j/84760948421?pwd=pCCCxZRFqTxdfpNkbaduizxOYY8wQI.1 [R=301,L]
 RewriteRule ^product/?$ product.html [R=301,L]
 
