@@ -28,6 +28,7 @@
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="locations.html" class="nav-link">Estates</a></li>
                 <li><a href="product.html" class="nav-link">Products</a></li>
+                <li><a href="/subscription" class="nav-link">Subscription</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -155,11 +156,11 @@
 
                     if (promoPrice) {
                         document.getElementById('price-container').innerHTML = `
-                            <span style="text-decoration: line-through; color: #999; font-size: 1.25rem; display: block; margin-bottom: 0.25rem;">₦${price}</span>
-                            <span style="color: var(--color-accent);">₦${promoPrice}</span>
+                            <span style="text-decoration: line-through; color: #999; font-size: 1.25rem; display: block; margin-bottom: 0.25rem;">â‚¦${price}</span>
+                            <span style="color: var(--color-accent);">â‚¦${promoPrice}</span>
                         `;
                     } else {
-                        document.getElementById('price-container').textContent = `₦${price}`;
+                        document.getElementById('price-container').textContent = `â‚¦${price}`;
                     }
 
                     // Images

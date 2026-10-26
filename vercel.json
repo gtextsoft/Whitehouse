@@ -10,6 +10,17 @@
       "source": "/careers",
       "destination": "https://gtextcareer.vercel.app/",
       "permanent": false
+    },
+    {
+      "source": "/SUBSCRIPTION",
+      "destination": "/subscription",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/subscription",
+      "destination": "/subscription.html"
     }
   ]
 }
