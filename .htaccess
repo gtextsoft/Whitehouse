@@ -2,5 +2,5 @@
 RewriteEngine On
 RewriteRule ^investormeeting/?$ https://us06web.zoom.us/j/84760948421?pwd=pCCCxZRFqTxdfpNkbaduizxOYY8wQI.1 [R=301,L]
 RewriteRule ^product/?$ product.html [R=301,L]
-RewriteRule ^subscription/?$ subscription.html [L,NC]
+RewriteRule ^subscription/?$ subscription.html [L]
 
